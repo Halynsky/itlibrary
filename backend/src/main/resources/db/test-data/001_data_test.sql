@@ -1,6 +1,8 @@
-INSERT INTO users (email, password, first_name, last_name, role, activated) VALUES ('taras@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Taras', 'Halynskyi', 'USER', true);
-INSERT INTO users (email, password, first_name, last_name, role, activated) VALUES ('ivan@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Ivan', 'Melnyk', 'USER', true);
-INSERT INTO users (email, password, first_name, last_name, role, activated) VALUES ('petro@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Petro', 'Koval', 'USER', true);
+DELETE FROM spring_session;
+
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('taras@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Taras', 'Halynskyi', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('ivan@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Ivan', 'Melnyk', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('petro@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Petro', 'Koval', 'USER', true);
 
 INSERT INTO author (email, first_name, last_name, country) VALUES ('robermartinxxx123@gmail.com', 'Robert', 'Martin', 'USA');
 INSERT INTO author (email, first_name, last_name, country) VALUES ('barbaraliskov123@gmail.com', 'Barbara', 'Liskov', 'Canada');
