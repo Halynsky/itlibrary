@@ -1,34 +1,35 @@
 package com.itstep.itlibrary.controller;
 
-import com.itstep.itlibrary.entity.User;
+import com.itstep.itlibrary.dto.UserDto;
 import com.itstep.itlibrary.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-    @Autowired private UserService userService;
+    private final UserService userService;
 
     @GetMapping("/{id}")
-    public User get(@PathVariable Long id) {
+    public UserDto get(@PathVariable Long id) {
         return userService.get(id);
     }
 
     @GetMapping()
-    public List<User> getAll() {
+    public List<UserDto> getAll() {
         return userService.getAll();
     }
 
     @PostMapping()
-    public void create(@RequestBody User user) {
+    public void create(@RequestBody UserDto user) {
         userService.create(user);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody User user) {
+    public void update(@PathVariable Long id, @RequestBody UserDto user) {
         userService.update(id, user);
     }
 

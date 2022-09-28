@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class ApiDocConfig {
 
     protected Info apiInfo() {
-        return  new Info().title("It books API")
+        return  new Info().title("ItLibrary API")
                 .description("Api for tutorial project")
                 .version("0.0.1")
                 .contact(new Contact().name("Taras Halynskyi").email("off.bk@gmail.com"));
