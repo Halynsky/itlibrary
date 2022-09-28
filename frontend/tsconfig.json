@@ -5,7 +5,7 @@
     "baseUrl": "./src",
     "paths": {
       "@env/*": ["environments/*"],
-      "@config/*": ["app/api/*"],
+      "@config/*": ["app/config/*"],
       "@api/*": ["app/api/*"],
     },
     "outDir": "./dist/out-tsc",
@@ -26,7 +26,7 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

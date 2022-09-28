@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { User } from "@api/models/User";
-import { API_URL } from "../../config/Constants";
+import { API_URL } from "@config/Constants";
+
 
 
 @Injectable({providedIn: 'root'})
