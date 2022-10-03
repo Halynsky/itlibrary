@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { UserHttpService } from "@api/services/user-http.service";
-import { User } from "@api/models/User";
-import { first } from "rxjs";
+
 
 @Component({
   selector: 'app-root',
@@ -9,21 +7,8 @@ import { first } from "rxjs";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
 
-  users: User[] = []
-
-  constructor(private userHttpService: UserHttpService) {
-    this.getUsers();
+  constructor() {
   }
 
-  getUsers() {
-    this.userHttpService.getAll()
-      .pipe(first())
-      .subscribe({
-        next: users => this.users = users,
-        error: error => console.error(error)
-      }
-    )
-  }
 }
