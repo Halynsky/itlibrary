@@ -12,6 +12,10 @@ export class UserHttpService {
   constructor(private http: HttpClient) {
   }
 
+  get(id: number) {
+    return this.http.get<User>(`${this.URL}/${id}`)
+  }
+
   getAll() {
     return this.http.get<User[]>(this.URL)
   }

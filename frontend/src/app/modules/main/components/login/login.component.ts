@@ -1,6 +1,11 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { FormsModule } from "@angular/forms";
+import { InputTextModule } from "primeng/inputtext";
+import { ButtonModule } from "primeng/button";
+import { AuthHttpService } from "@api/services/auth-http.service";
+import { first } from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -9,9 +14,23 @@ import { RouterModule } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  credentials = {
+    email: '',
+    password: '',
+  }
+
+  constructor(private authHttpService: AuthHttpService) { }
 
   ngOnInit(): void {
+  }
+
+  login() {
+    this.authHttpService.login(this.credentials)
+      .pipe(first())
+      .subscribe({
+        next: user => console.log("Logged in", user),
+        error: error => console.log(error)
+      })
   }
 
 }
@@ -21,8 +40,11 @@ export class LoginComponent implements OnInit {
     LoginComponent
   ],
   imports: [
-    RouterModule.forChild([{ path: "", component: LoginComponent }]),
-    CommonModule
+    RouterModule.forChild([{path: "", component: LoginComponent}]),
+    CommonModule,
+    FormsModule,
+    InputTextModule,
+    ButtonModule
   ]
 })
 export class LoginModule { }
