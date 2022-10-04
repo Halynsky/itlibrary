@@ -3,15 +3,16 @@ package com.itstep.itlibrary.controller;
 import com.itstep.itlibrary.dto.AuthorDto;
 import com.itstep.itlibrary.entity.Author;
 import com.itstep.itlibrary.service.AuthorService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/authors")
 public class AuthorController {
-    @Autowired private AuthorService authorService;
+    private final AuthorService authorService;
 
     @GetMapping("/{id}")
     public Author get(@PathVariable Long id) {

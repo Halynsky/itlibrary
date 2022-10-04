@@ -1,17 +1,22 @@
 package com.itstep.itlibrary.entity;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class Publisher {
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
 
     @OneToMany(mappedBy = "publisher")

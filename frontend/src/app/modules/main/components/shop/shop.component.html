@@ -1,0 +1,57 @@
+<div class="card">
+  <p-dataView #dataView [value]="books.content" [paginator]="true" [rows]="9" filterBy="name"
+              [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+    <ng-template pTemplate="header">
+      <div class="flex flex-column md:flex-row md:justify-content-between">
+        <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)"
+                    styleClass="mb-2 md:mb-0"></p-dropdown>
+        <span class="p-input-icon-left mb-2 md:mb-0">
+                    <i class="pi pi-search"></i>
+                    <input type="search" pInputText placeholder="Search by Name" (input)="dataView.filter($any($event.target).value)">
+        </span>
+        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+      </div>
+    </ng-template>
+    <ng-template let-book pTemplate="listItem">
+      <div class="col-12">
+        <div class="product-list-item">
+          <img src="https://media.istockphoto.com/vectors/01open-book-and-creative-paper-airplanes-teamwork-paper-art-style-vector-id1189849703?k=20&m=1189849703&s=612x612&w=0&h=ViTOSts22Be3PJY0HD_2dLSF31VE5BgD0Sm7ZB96DQ8=" [alt]="book.title"/>
+          <div class="product-list-detail">
+            <div class="product-name">{{book.title}}</div>
+            <div class="product-description">{{book.description}}</div>
+            <p-rating [ngModel]="book.rating" [readonly]="true" [cancel]="false"></p-rating>
+            <i class="pi pi-tag product-category-icon"></i><span class="product-category">Books</span>
+          </div>
+          <div class="product-list-action">
+            <span class="product-price">{{book.price / 100 | currency:'UAH':'symbol-narrow'}}</span>
+            <p-button icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="book.inventoryStatus === InventoryStatus.OUTOFSTOCK"></p-button>
+            <span [class]="'product-badge status-' + book.inventoryStatus.toLowerCase()">{{book.inventoryStatus}}</span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template let-book pTemplate="gridItem">
+      <div class="col-12 md:col-4">
+        <div class="product-grid-item card">
+          <div class="product-grid-item-top">
+            <div>
+              <i class="pi pi-tag product-category-icon"></i>
+              <span class="product-category">Books</span>
+            </div>
+            <span [class]="'product-badge status-' + book.inventoryStatus.toLowerCase()">{{book.inventoryStatus}}</span>
+          </div>
+          <div class="product-grid-item-content">
+            <img src="https://media.istockphoto.com/vectors/01open-book-and-creative-paper-airplanes-teamwork-paper-art-style-vector-id1189849703?k=20&m=1189849703&s=612x612&w=0&h=ViTOSts22Be3PJY0HD_2dLSF31VE5BgD0Sm7ZB96DQ8=" [alt]="book.title"/>
+            <div class="product-name">{{book.title}}</div>
+            <div class="product-description">{{book.description}}</div>
+            <p-rating [ngModel]="book.rating | number: '1.0-0'" [readonly]="true" [cancel]="false"></p-rating>
+          </div>
+          <div class="product-grid-item-bottom">
+            <span class="product-price">{{book.price / 100 | currency:'UAH':'symbol-narrow'}}</span>
+            <p-button icon="pi pi-shopping-cart" [disabled]="book.inventoryStatus === InventoryStatus.OUTOFSTOCK"></p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>

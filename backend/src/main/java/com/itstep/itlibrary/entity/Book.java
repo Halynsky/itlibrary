@@ -3,18 +3,29 @@ package com.itstep.itlibrary.entity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Data;
+import com.itstep.itlibrary.enums.InventoryStatus;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class Book {
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String title;
+    @Column(nullable = false)
+    private Integer price;
+    @Enumerated(EnumType.STRING)
+    private InventoryStatus inventoryStatus;
+    private Double rating;
 
     @ManyToMany()
     @JoinTable(name = "book_author",

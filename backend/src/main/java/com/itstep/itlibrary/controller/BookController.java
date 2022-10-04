@@ -1,34 +1,39 @@
 package com.itstep.itlibrary.controller;
 
-import com.itstep.itlibrary.entity.Book;
+import com.itstep.itlibrary.dto.BookDto;
+
 import com.itstep.itlibrary.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
-    @Autowired private BookService bookService;
+    private final BookService bookService;
 
     @GetMapping("/{id}")
-    public Book get(@PathVariable Long id) {
+    public BookDto get(@PathVariable Long id) {
         return bookService.get(id);
     }
 
     @GetMapping()
-    public List<Book> getAll() {
-        return bookService.getAll();
+    public Page<BookDto> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        return bookService.getAll(pageable);
     }
 
     @PostMapping()
-    public void create(@RequestBody Book book) {
+    public void create(@RequestBody BookDto book) {
         bookService.create(book);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody Book book) {
+    public void update(@PathVariable Long id, @RequestBody BookDto book) {
         bookService.update(id, book);
     }
 

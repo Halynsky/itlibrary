@@ -6,6 +6,7 @@ import { InputTextModule } from "primeng/inputtext";
 import { ButtonModule } from "primeng/button";
 import { AuthHttpService } from "@api/services/auth-http.service";
 import { first } from "rxjs";
+import { SecurityService } from "../../../../services/security.service";
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     password: '',
   }
 
-  constructor(private authHttpService: AuthHttpService) { }
+  constructor(private authHttpService: AuthHttpService,
+              private securityService: SecurityService) { }
 
   ngOnInit(): void {
   }
@@ -28,7 +30,10 @@ export class LoginComponent implements OnInit {
     this.authHttpService.login(this.credentials)
       .pipe(first())
       .subscribe({
-        next: user => console.log("Logged in", user),
+        next: user => {
+          console.log("Logged in", user)
+          this.securityService.login(user)
+        },
         error: error => console.log(error)
       })
   }
