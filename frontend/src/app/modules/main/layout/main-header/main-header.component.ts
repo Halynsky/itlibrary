@@ -4,24 +4,27 @@ import { AuthHttpService } from "@api/services/auth-http.service";
 import { first } from "rxjs";
 import { SecurityService } from "../../../../services/security.service";
 import { Role } from "@api/models/enums/Role";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
+
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-main-header',
   templateUrl: './main-header.component.html',
   styleUrls: ['./main-header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
-
   userMenuItems: MenuItem[] = [];
 
   constructor(private authHttpService: AuthHttpService,
-              private securityService: SecurityService) {
+              public securityService: SecurityService) {
     this.initUserMenuItems();
 
-    // TODO: unsubscribe on destroy
-    this.securityService.isAuthenticated$.subscribe(isAuthenticated => {
-      this.initUserMenuItems();
-    })
+    this.securityService.isAuthenticated$
+      .pipe(untilDestroyed(this))
+      .subscribe(isAuthenticated => {
+        this.initUserMenuItems(isAuthenticated);
+      })
   }
 
   ngOnInit(): void {
@@ -38,13 +41,13 @@ export class MainHeaderComponent implements OnInit {
       })
   }
 
-  initUserMenuItems() {
+  initUserMenuItems(isAuthenticated: boolean = this.securityService.isAuthenticated()) {
     this.userMenuItems = [
       {
         label: 'Login',
         icon: 'fa-solid fa-right-to-bracket',
         routerLink: '/login',
-        visible: !this.securityService.isAuthenticated()
+        visible: !isAuthenticated
       },
       {
         label: 'Admin panel',
@@ -56,7 +59,7 @@ export class MainHeaderComponent implements OnInit {
         label: 'Logout',
         icon: 'fa-solid fa-right-from-bracket',
         command: () => this.logout(),
-        visible: this.securityService.isAuthenticated()
+        visible: isAuthenticated
       }
     ];
   }

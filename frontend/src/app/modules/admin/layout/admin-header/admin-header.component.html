@@ -1,1 +1,17 @@
+<div class="header-left">
+  <i class="pi pi-home" routerLink="/admin"></i>
+</div>
+
+<div class="header-middle">
+  <a routerLink="/admin/users" routerLinkActive="active">Users</a>
+  <a routerLink="/admin/authors" routerLinkActive="active">Authors</a>
+  <a routerLink="/admin/publishers" routerLinkActive="active">Publishers</a>
+  <a routerLink="/admin/books" routerLinkActive="active">Books</a>
+</div>
+
+<div class="header-right">
+  <p-avatar icon="pi pi-user" shape="circle" (click)="userMenu.toggle($event)"></p-avatar>
+  <p-menu #userMenu [popup]="true" [model]="userMenuItems"></p-menu>
+</div>
+
 

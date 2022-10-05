@@ -13,6 +13,7 @@ import { first } from "rxjs";
 import { RestPage } from "@api/models/RestPage";
 import { InputTextModule } from "primeng/inputtext";
 import { InventoryStatus } from "@api/models/enums/InventoryStatus";
+import { UserHttpService } from "@api/services/user-http.service";
 
 
 @Component({
@@ -43,10 +44,7 @@ export class ShopComponent implements OnInit {
   getBooks() {
     this.bookHttpService.getAll().pipe(first())
       .subscribe({
-        next: books => {
-          console.log(books)
-          this.books = books;
-        },
+        next: books => this.books = books,
         error: error => console.error(error)
       })
   }

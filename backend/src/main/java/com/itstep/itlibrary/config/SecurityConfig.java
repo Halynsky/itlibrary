@@ -41,6 +41,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> auth
                 .antMatchers("/api/auth/login").permitAll()
                 .antMatchers("/api/auth/logout").permitAll()
+                .antMatchers("/api/books/**").permitAll()
                 // TODO: Uncomment when security will be implemented
                 .antMatchers("/api/**").authenticated()
                 .antMatchers("/**").permitAll());

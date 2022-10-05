@@ -7,6 +7,8 @@ import com.itstep.itlibrary.mapper.Mapper;
 import com.itstep.itlibrary.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,8 @@ public class UserService {
         return userRepository.findById(id).map(mapper::toUserDto).orElseThrow(() -> new ItemNotFoundException("User not found id =" + id));
     }
 
-    public List<UserDto> getAll() {
-        return  userRepository.findAll().stream().map(mapper::toUserDto).toList();
+    public Page<UserDto> getAll(Pageable pageable) {
+        return userRepository.findAll(pageable).map(mapper::toUserDto);
     }
 
     public void update(Long id, UserDto userDto) {

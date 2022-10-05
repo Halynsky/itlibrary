@@ -1,9 +1,18 @@
-DELETE FROM spring_session;
+-- DELETE FROM spring_session;
 
-INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Taras', 'Halynskyi', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Petro', 'Pupkin', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('user@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Oksana', 'Grugorovych', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('admin@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Alex', 'Arestovych', 'ADMIN', true);
 INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('taras@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Taras', 'Halynskyi', 'USER', true);
 INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('ivan@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Ivan', 'Melnyk', 'USER', true);
 INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('petro@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Petro', 'Koval', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test1@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Test1', 'Tester1', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test2@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Test2', 'Tester2', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test3@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Test3', 'Tester3', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test4@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Test4', 'Tester4', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test5@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Test5', 'Tester5', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test6@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Test6', 'Tester6', 'USER', true);
+
 
 INSERT INTO author (email, first_name, last_name, country) VALUES ('robermartinxxx12345@gmail.com', 'Robert', 'Martin', 'USA');
 INSERT INTO author (email, first_name, last_name, country) VALUES ('barbaraliskov12345@gmail.com', 'Barbara', 'Liskov', 'Canada');

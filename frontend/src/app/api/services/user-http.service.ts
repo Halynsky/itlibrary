@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { User } from "@api/models/User";
 import { API_URL } from "@config/Constants";
+import { RestPage } from "@api/models/RestPage";
+import { Pagination } from "@api/models/Pagination";
 
 
 @Injectable({providedIn: 'root'})
@@ -15,8 +17,17 @@ export class UserHttpService {
     return this.http.get<User>(`${this.URL}/${id}`)
   }
 
-  getAll() {
-    return this.http.get<User[]>(this.URL)
+  getAll(pagination: Pagination) {
+    const params = new HttpParams({ fromObject: {...pagination} })
+    return this.http.get<RestPage<User>>(this.URL, { params })
+  }
+
+  create(user: User) {
+    return this.http.post<void>(this.URL, user)
+  }
+
+  update(user: User) {
+    return this.http.post<void>(`${this.URL}/${user.id}`, user)
   }
 
 }

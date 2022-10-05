@@ -8,6 +8,9 @@
       "@config/*": ["app/config/*"],
       "@api/*": ["app/api/*"],
       "@modules/*": ["app/modules/*"],
+      "@services/*": ["app/services/*"],
+      "@guards/*": ["app/guards/*"],
+      "@interceptors/*": ["app/interceptors/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

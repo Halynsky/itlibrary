@@ -30,10 +30,7 @@ export class LoginComponent implements OnInit {
     this.authHttpService.login(this.credentials)
       .pipe(first())
       .subscribe({
-        next: user => {
-          console.log("Logged in", user)
-          this.securityService.login(user)
-        },
+        next: user => this.securityService.login(user),
         error: error => console.log(error)
       })
   }
