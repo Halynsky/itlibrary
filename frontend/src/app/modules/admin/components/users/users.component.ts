@@ -7,6 +7,7 @@ import { User } from "@api/models/User";
 import { TableModule } from "primeng/table";
 import { RestPage } from "@api/models/RestPage";
 import { Pagination } from "@api/models/Pagination";
+import { PrimeNgUtil } from "@api/utils/PrimeNgUtil";
 
 
 @Component({
@@ -25,15 +26,12 @@ export class UsersComponent implements OnInit {
   }
 
   onLazyLoad(event: any) {
-    console.log(event)
-    console.log(Pagination.fromPrimeNg(event))
-
-    this.loadData(Pagination.fromPrimeNg(event))
+    this.loadData(PrimeNgUtil.ngPrimeTableFiltersToParams(event.filters), Pagination.fromPrimeNg(event))
   }
 
-  loadData(pagination: Pagination = new Pagination()) {
+  loadData(filters: {[key: string]: string} = {}, pagination: Pagination = new Pagination()) {
     this.loading = true;
-    this.userHttpService.getAll(pagination)
+    this.userHttpService.getAll(filters, pagination)
       .pipe(first(), finalize(() => this.loading = false))
       .subscribe({
         next: users => this.users = users,

@@ -43,8 +43,7 @@ public class SecurityConfig {
                 .antMatchers("/api/auth/logout").permitAll()
                 .antMatchers("/api/books/**").permitAll()
                 // TODO: Uncomment when security will be implemented
-                .antMatchers("/api/**").authenticated()
-                .antMatchers("/**").permitAll());
+                .antMatchers("/api/**").authenticated());
 
         return http.build();
     }

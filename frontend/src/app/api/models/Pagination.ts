@@ -13,6 +13,7 @@ export class Pagination {
     let pagination = new Pagination();
     pagination.page = primeNgEvent.first ? primeNgEvent.first / primeNgEvent.rows : 0;
     pagination.size = primeNgEvent.rows;
+    if (primeNgEvent.sortField) pagination.sort = `${primeNgEvent.sortField},${primeNgEvent.sortOrder > 0 ? 'ASC' : 'DESC'}`
     return pagination;
   }
 

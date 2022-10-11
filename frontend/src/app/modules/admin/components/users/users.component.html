@@ -1,14 +1,34 @@
 <p-table [value]="users.content" [lazy]="true" [loading]="loading" (onLazyLoad)="onLazyLoad($event)" responsiveLayout="scroll" [paginator]="true"
-         [rows]="users.size" [totalRecords]="users.totalElements" [showCurrentPageReport]="true"
+         [rows]="users.size" [totalRecords]="users.totalElements" [showCurrentPageReport]="true" sortField="id"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
   <ng-template pTemplate="header">
     <tr>
-      <th>Id</th>
-      <th>email</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Activated</th>
-      <th>Disabled</th>
+      <th pSortableColumn="id">Id <p-sortIcon field="id"></p-sortIcon></th>
+      <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+      <th pSortableColumn="firstName">First name <p-sortIcon field="firstName"></p-sortIcon></th>
+      <th pSortableColumn="lastName">Last name <p-sortIcon field="lastName"></p-sortIcon></th>
+      <th pSortableColumn="isActivated">Activated <p-sortIcon field="isActivated"></p-sortIcon></th>
+      <th pSortableColumn="isDisabled">Disabled <p-sortIcon field="isDisabled"></p-sortIcon></th>
+    </tr>
+    <tr>
+      <th>
+        <p-columnFilter type="text" field="id" [showMenu]="false" matchMode="equals" placeholder="Search by id..."></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="email" [showMenu]="false" matchMode="equals" placeholder="Search by email..."></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="firstName" [showMenu]="false" matchMode="equals" placeholder="Search by first name..."></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="lastName" [showMenu]="false" matchMode="equals" placeholder="Search by last name..."></p-columnFilter>
+      </th>
+      <th>
+
+      </th>
+      <th>
+
+      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-user>

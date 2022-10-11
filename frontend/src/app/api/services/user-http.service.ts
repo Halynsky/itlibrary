@@ -17,8 +17,8 @@ export class UserHttpService {
     return this.http.get<User>(`${this.URL}/${id}`)
   }
 
-  getAll(pagination: Pagination) {
-    const params = new HttpParams({ fromObject: {...pagination} })
+  getAll(params: {[key: string]: any}, pagination: Pagination) {
+    params = new HttpParams({ fromObject: {...params, ...pagination} })
     return this.http.get<RestPage<User>>(this.URL, { params })
   }
 

@@ -10,7 +10,8 @@
       "@modules/*": ["app/modules/*"],
       "@services/*": ["app/services/*"],
       "@guards/*": ["app/guards/*"],
-      "@interceptors/*": ["app/interceptors/*"]
+      "@interceptors/*": ["app/interceptors/*"],
+      "@utils/*": ["app/utils/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

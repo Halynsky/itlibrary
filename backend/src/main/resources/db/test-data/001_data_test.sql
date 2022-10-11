@@ -12,6 +12,8 @@ INSERT INTO users (email, password, first_name, last_name, role, is_activated) V
 INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test4@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Test4', 'Tester4', 'USER', true);
 INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test5@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Test5', 'Tester5', 'USER', true);
 INSERT INTO users (email, password, first_name, last_name, role, is_activated) VALUES ('test6@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'Test6', 'Tester6', 'USER', true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated, is_disabled) VALUES ('userdisabled@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'User', 'Disabled', 'USER', true, true);
+INSERT INTO users (email, password, first_name, last_name, role, is_activated, is_disabled) VALUES ('userinactivated@gmail.com', '$2a$10$.bofveeGYtjkyumcNh8MlOvBxyHpSxefy1hMZ1canNygE4U1doqoe', 'USer', 'Inactive', 'USER', false, false);
 
 
 INSERT INTO author (email, first_name, last_name, country) VALUES ('robermartinxxx12345@gmail.com', 'Robert', 'Martin', 'USA');

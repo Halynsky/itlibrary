@@ -26,8 +26,11 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping()
-    public Page<UserDto> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
-        return userService.getAll(pageable);
+    public Page<UserDto> getAll(
+            @RequestParam(required = false) Long id,
+            @RequestParam(required = false) String email,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        return userService.getAll(id, email, pageable);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
