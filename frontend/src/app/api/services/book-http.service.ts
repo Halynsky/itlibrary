@@ -1,8 +1,10 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { API_URL } from "@config/Constants";
 import { Book } from "@api/models/Book";
 import { RestPage } from "@api/models/RestPage";
+import { Pagination } from "@api/models/Pagination";
+
 
 @Injectable({providedIn: 'root'})
 export class BookHttpService {
@@ -15,8 +17,9 @@ export class BookHttpService {
     return this.http.get<Book>(`${this.URL}/${id}`)
   }
 
-  getAll() {
-    return this.http.get<RestPage<Book>>(this.URL)
+  getAll(params: {[key: string]: any}, pagination: Pagination) {
+    params = new HttpParams({ fromObject: {...params, ...pagination} })
+    return this.http.get<RestPage<Book>>(this.URL, { params })
   }
 
 }

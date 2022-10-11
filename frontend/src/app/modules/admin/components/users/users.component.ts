@@ -8,6 +8,11 @@ import { TableModule } from "primeng/table";
 import { RestPage } from "@api/models/RestPage";
 import { Pagination } from "@api/models/Pagination";
 import { PrimeNgUtil } from "@api/utils/PrimeNgUtil";
+import { YesNoPipeModule } from "@pipes/yes-no-pipe/yes-no.pipe";
+import { MultiSelectModule } from "primeng/multiselect";
+import { FormsModule } from "@angular/forms";
+import { DropdownModule } from "primeng/dropdown";
+import { SelectItem } from "primeng/api";
 
 
 @Component({
@@ -18,6 +23,12 @@ import { PrimeNgUtil } from "@api/utils/PrimeNgUtil";
 export class UsersComponent implements OnInit {
   users: RestPage<User> = new RestPage<User>();
   loading: boolean = false;
+
+  isTrueOptions: SelectItem[] = [
+    {label: 'All', value: undefined},
+    {label: 'Yes', value: true},
+    {label: 'No', value: false},
+  ]
 
   constructor(private userHttpService: UserHttpService) {
   }
@@ -48,7 +59,11 @@ export class UsersComponent implements OnInit {
   imports: [
     RouterModule.forChild([{path: "", component: UsersComponent}]),
     CommonModule,
-    TableModule
+    TableModule,
+    YesNoPipeModule.forRoot(),
+    MultiSelectModule,
+    FormsModule,
+    DropdownModule,
   ]
 })
 export class UsersModule { }

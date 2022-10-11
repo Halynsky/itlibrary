@@ -23,8 +23,9 @@ public class BookController {
     }
 
     @GetMapping()
-    public Page<BookDto> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
-        return bookService.getAll(pageable);
+    public Page<BookDto> getAll(@RequestParam String searchTerm,
+                                @PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        return bookService.getAll(searchTerm, pageable);
     }
 
     @PostMapping()

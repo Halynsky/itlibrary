@@ -24,8 +24,8 @@ public class UserService {
         return userRepository.findById(id).map(mapper::toUserDto).orElseThrow(() -> new ItemNotFoundException("User not found id =" + id));
     }
 
-    public Page<UserDto> getAll(Long id, String email, Pageable pageable) {
-        return userRepository.findAllBy(id, email, pageable).map(mapper::toUserDto);
+    public Page<UserDto> getAll(Long id, String email, Boolean isActivated, Boolean isDisabled, Pageable pageable) {
+        return userRepository.findAllBy(id, email, isActivated, isDisabled, pageable).map(mapper::toUserDto);
     }
 
     public void update(Long id, UserDto userDto) {

@@ -22,6 +22,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
         SELECT u FROM User u
         WHERE (:id IS NULL OR u.id = :id)
         AND (:email IS NULL OR lower(u.email) LIKE concat('%', lower(:email), '%'))
+        AND (:isActivated IS NULL OR u.isActivated = :isActivated)
+        AND (:isDisabled IS NULL OR u.isDisabled = :isDisabled)
     """)
-    Page<User> findAllBy(Long id, String email, Pageable pageable);
+    Page<User> findAllBy(Long id, String email, Boolean isActivated, Boolean isDisabled, Pageable pageable);
 }

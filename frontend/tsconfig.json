@@ -9,6 +9,7 @@
       "@api/*": ["app/api/*"],
       "@modules/*": ["app/modules/*"],
       "@services/*": ["app/services/*"],
+      "@pipes/*": ["app/pipes/*"],
       "@guards/*": ["app/guards/*"],
       "@interceptors/*": ["app/interceptors/*"],
       "@utils/*": ["app/utils/*"]

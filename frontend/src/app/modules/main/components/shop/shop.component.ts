@@ -13,7 +13,7 @@ import { first } from "rxjs";
 import { RestPage } from "@api/models/RestPage";
 import { InputTextModule } from "primeng/inputtext";
 import { InventoryStatus } from "@api/models/enums/InventoryStatus";
-import { UserHttpService } from "@api/services/user-http.service";
+import { Pagination } from "@api/models/Pagination";
 
 
 @Component({
@@ -26,23 +26,28 @@ export class ShopComponent implements OnInit {
   books: RestPage<Book> = new RestPage<Book>();
 
   sortOptions: SelectItem[] = [
-    {label: 'Price High to Low', value: '!price'},
-    {label: 'Price Low to High', value: 'price'}
+    {label: 'Price High to Low', value: 'price,DESC'},
+    {label: 'Price Low to High', value: 'price,ASC'}
   ];
 
   sortKey: string = this.sortOptions[0].value
-  sortField: string = 'id';
-  sortOrder: number = 1;
+  searchTerm: string = '';
+  pagination: Pagination = new Pagination()
 
   constructor(private bookHttpService: BookHttpService) {
-    this.getBooks();
   }
 
   ngOnInit() {
   }
 
-  getBooks() {
-    this.bookHttpService.getAll().pipe(first())
+  onLazyLoad(event: any) {
+    console.log(event);
+    this.pagination = Pagination.fromPrimeNgDataView(event, this.sortKey);
+    this.getBooks({searchTerm: this.searchTerm}, Pagination.fromPrimeNgDataView(event, this.sortKey))
+  }
+
+  getBooks(filters: {[key: string]: string} = {}, pagination: Pagination = new Pagination(0, 9, this.sortKey)) {
+    this.bookHttpService.getAll(filters, pagination).pipe(first())
       .subscribe({
         next: books => this.books = books,
         error: error => console.error(error)
@@ -50,10 +55,13 @@ export class ShopComponent implements OnInit {
   }
 
   onSortChange(event: any) {
-    let value = event.value;
-    console.log(value)
+    this.pagination.sort = event.value
+    this.getBooks({searchTerm: this.searchTerm}, this.pagination)
   }
 
+  onSearchTermInput(event: any) {
+    this.getBooks({searchTerm: this.searchTerm}, this.pagination)
+  }
 }
 
 @NgModule({

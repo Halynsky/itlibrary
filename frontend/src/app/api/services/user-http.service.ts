@@ -27,7 +27,7 @@ export class UserHttpService {
   }
 
   update(user: User) {
-    return this.http.post<void>(`${this.URL}/${user.id}`, user)
+    return this.http.put<void>(`${this.URL}/${user.id}`, user)
   }
 
 }

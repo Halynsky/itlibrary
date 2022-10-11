@@ -42,8 +42,8 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public Page<BookDto> getAll(Pageable pageable) {
-        return bookRepository.findAll(pageable).map(mapper::toBookDto);
+    public Page<BookDto> getAll(String searchTerm, Pageable pageable) {
+        return bookRepository.findAll(searchTerm, pageable).map(mapper::toBookDto);
     }
 
     private Book retrieve(Long id) {

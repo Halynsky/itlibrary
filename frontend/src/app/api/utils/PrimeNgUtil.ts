@@ -8,14 +8,13 @@ export class PrimeNgUtil {
       let filterObject = filters[key];
       let value = filterObject.value;
       let matchMode = filterObject.matchMode;
-      if (!value) return;
+      if (value == undefined) return;
       if (matchMode == 'between') {
         params[key + 'From'] = value[0];
         params[key + 'To'] = value[1];
       } else {
         params[key] = value;
       }
-
     })
     return params
   }
