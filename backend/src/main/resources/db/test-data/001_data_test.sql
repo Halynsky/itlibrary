@@ -26,8 +26,10 @@ INSERT INTO publisher (name, founded) VALUES ('Easy Dev Learn', '2005-02-09');
 INSERT INTO book (title, publisher_id, price, inventory_status, rating) VALUES ('Java rush course', 1, 1000, 'INSTOCK', 4.3424224);
 INSERT INTO book (title, publisher_id, price, inventory_status, rating) VALUES ('Spring in action', 2, 1500, 'LOWSTOCK', 4.4566);
 INSERT INTO book (title, publisher_id, price, inventory_status, rating) VALUES ('Angular for beginners', 2, 1899, 'OUTOFSTOCK', 3.4566);
+INSERT INTO book (title, publisher_id, price, inventory_status, rating) VALUES ('PHP rule them all', 1, 1000, 'INSTOCK', 4.3424224);
 
 INSERT INTO book_author (book_id, author_id) VALUES (1, 2);
 INSERT INTO book_author (book_id, author_id) VALUES (2, 1);
 INSERT INTO book_author (book_id, author_id) VALUES (2, 2);
 INSERT INTO book_author (book_id, author_id) VALUES (3, 3);
+INSERT INTO book_author (book_id, author_id) VALUES (4, 3);
